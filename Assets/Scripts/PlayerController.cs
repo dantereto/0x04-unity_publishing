@@ -42,8 +42,11 @@ public class PlayerController : MonoBehaviour
     {
         if (health == 0)
         {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene("maze");
+            winLoseText.text = "Game Over!";
+            winLoseText.color = Color.white;
+            winLoseBG.color = Color.red;
+            winLoseBG.gameObject.SetActive(true);
+            StartCoroutine(LoadScene(3));
         }
     }
     void OnTriggerEnter(Collider other)
@@ -64,7 +67,8 @@ public class PlayerController : MonoBehaviour
             winLoseText.color = Color.black;
             winLoseText.text = "You Win!";
             winLoseBG.color = Color.green;
-            winLoseBG.gameObject.SetActive(true);     
+            winLoseBG.gameObject.SetActive(true);
+            StartCoroutine(LoadScene(3));
         }
     }
     void SetScoreText()
@@ -74,5 +78,10 @@ public class PlayerController : MonoBehaviour
     void SetHealthText()
     {
         healthText.text = $"Health: {health}";
+    }
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(0);
     }
 }

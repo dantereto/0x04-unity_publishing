@@ -156,11 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b676a1a138764504ba907c14c153bb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winLoseText: {fileID: 0}
-  winLoseBG: {fileID: 0}
+  winLoseText: {fileID: 1872592677}
+  winLoseBG: {fileID: 1626083580}
   healthText: {fileID: 1557340450}
   scoreText: {fileID: 143989448}
-  speed: 200
+  speed: 400
   rb: {fileID: 9761377}
   health: 5
 --- !u!54 &9761377
