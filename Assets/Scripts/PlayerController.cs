@@ -1,10 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Collections;
 public class PlayerController : MonoBehaviour
 {
+    public Text winLoseText;
+    public Image winLoseBG;
+    public Text healthText;
+    public Text scoreText;
     public float speed = 30f;
     public Rigidbody rb;
     private int score = 0;
@@ -47,18 +51,28 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Pickup")
         {
             score += 1;
-            Debug.Log("Score: " + score);
+            SetScoreText();
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Trap")
         {
             health -= 1;
-            Debug.Log("Health: " + health);
+            SetHealthText();
         }
         if (other.gameObject.tag == "Goal")
         {
-            Debug.Log("You win!");
+            winLoseText.color = Color.black;
+            winLoseText.text = "You Win!";
+            winLoseBG.color = Color.green;
+            winLoseBG.gameObject.SetActive(true);     
         }
     }
-
+    void SetScoreText()
+    {
+        scoreText.text = $"Score: {score}";
+    }
+    void SetHealthText()
+    {
+        healthText.text = $"Health: {health}";
+    }
 }
